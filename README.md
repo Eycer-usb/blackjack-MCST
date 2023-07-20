@@ -1,8 +1,8 @@
-# Simulador de Juego de Blackjack con agente inteligente mediante Arboles de Busqueda de Monte Carlo
+# Simulador de Juego de Blackjack con Inteligencia artificial
 
 Este es un simulador para el popular juego de Casino "Blackjack"
-con inteligencia articial incluida para sugerirle al jugador que jugada es mejor realizar
-basado en el algoritmo en arboles de busqueda de Monte Carlo
+con inteligencia articial incluida para sugerirle al jugador cual es la mejor jugada a realizar
+basado en el algoritmo en arboles de busqueda de Monte Carlo. El juego es uno contra uno, un solo jugador contra el dealer.
 
 Cuenta con un cliente llamado black_jack_simulator.py
 
@@ -22,5 +22,5 @@ Se requiere python 3 e instalar los requerimientos en el archivo requirements.tx
 
 # Creditos:
 
-Eros Cedeño 16-10216
-Leonel Guerrero 18-10638
+- Eros Cedeño 16-10216
+- Leonel Guerrero 18-10638
