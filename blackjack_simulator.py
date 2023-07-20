@@ -1,7 +1,7 @@
 import random
 from src.state import State
 import sys
-import src.mcts as MCTS
+from src.mcts import MCTS
 
 """
     Client script for the blackjack simulator.
@@ -17,9 +17,7 @@ def main(args=sys.argv[1:]):
     if( len(args) > 0 and args[0] == "help" ):
         help()
         return
-    if( len(args) == 1 and args[0] != "help" ):
-        help()
-        return
+    
     if len(args) > 1:
         print("Too many arguments!")
         help()
@@ -27,7 +25,7 @@ def main(args=sys.argv[1:]):
     
     # Print welcome message
     print("Welcome to the Blackjack Simulator!")
-    iteration_number = 1000
+    iteration_number = 100
     
     # Check for iteration number
     if( len(args) > 0 ):
@@ -42,7 +40,7 @@ def main(args=sys.argv[1:]):
     print("Running {} iterations...".format(iteration_number))
     
     # Create a new game
-    root = State()
+    root = State(initial_state=True)
     print("Initial state: {}".format(root))
         
     # Run the Game
@@ -50,7 +48,7 @@ def main(args=sys.argv[1:]):
     while current_state.not_terminal():
         mcts = MCTS(current_state, iteration_number)
         mcts.run()
-        current_state = mcts.get_best_move()
+        current_state = current_state.get_best_move()
         print("Current state: {}".format(current_state))
 
 """

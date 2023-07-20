@@ -2,11 +2,13 @@
 Class representation for a Card in the game of Blackjack
 """
 
-class Card():
-    def __init__(self, value, suit, numeric_value):
-        self.numeric_value = numeric_value
-        self.value = value
-        self.suit = suit
+class Card(int):
+    def __new__(cls, value, suit, numeric_value, *args, **kwargs):
+        instance = int.__new__(cls, numeric_value, *args, **kwargs)
+        instance.numeric_value = numeric_value
+        instance.value = value
+        instance.suit = suit
+        return instance
 
     """
     Object representation, comparison methods and mathematical operators
@@ -36,13 +38,14 @@ class Card():
         return self.numeric_value != o.numeric_value
     
     def __add__(self, o: object) -> int:
-        return self.numeric_value + o.numeric_value
+        return self.numeric_value + o
     
     def __sub__(self, o: object) -> int:
         return self.numeric_value - o.numeric_value
     
     def __mul__(self, o: object) -> int:
         return self.numeric_value * o.numeric_value
+    
     
     
     # Getters
@@ -52,10 +55,10 @@ class Card():
         return self.suit
 
     # Create a maze of cards    
-    def create_maze(self):
+    def create_maze():
         suits = ['♠','♥','♦','♣']
         values = ['A','2','3','4','5','6','7','8','9','10','J','Q','K']
-        numeric_values = [1,2,3,4,5,6,7,8,9,10,10,10,10]
+        numeric_values = [11,2,3,4,5,6,7,8,9,10,10,10,10]
         maze = []
         for i in range(13):
             for k in range(4):

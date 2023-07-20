@@ -1,9 +1,9 @@
 """"
 Monte Carlo Tree Search Class for the game of Blackjack
 """
-from state import State
+from .state import State
 
-def MCTS():
+class MCTS():
     
     """
     Constructor for the MCTS class
@@ -39,7 +39,7 @@ def MCTS():
     
     # Expand the selected node
     def expand(self, node):
-        return node.create_child(node)
+        return node.create_child()
     
     # Simulate the game
     def simulate(self, node):
