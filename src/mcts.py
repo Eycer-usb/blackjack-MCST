@@ -29,12 +29,15 @@ class MCTS():
             node = self.expand(node)
             value = self.simulate(node)
             self.backpropagate(node, value)
+            
     
     # Select a node to expand
     def select(self):
         selected = self.root
         while selected.is_fully_expanded():
             selected = selected.get_best_move()
+            if not selected.not_terminal():
+                break
         return selected
     
     # Expand the selected node
@@ -51,4 +54,11 @@ class MCTS():
             node.simulation_number += 1
             node.simulation_value += value
             node = node.parent
+            
+    def get_best_action(self):
+        more_likely = self.root.get_best_move()
+        if more_likely.not_terminal():
+            return True
+            
+        return False
     
